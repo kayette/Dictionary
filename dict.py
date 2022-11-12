@@ -18,15 +18,15 @@ def hello():
     print()
 
 def optionOne():
-    global inputName, fullname, age, gender, address, number, vaccine, booster, comorbidity
+    global inputName, contact, age, gender, address, number, vaccine, booster, comorbidity
     print("\nYou have selected: Option 1. Kindly fill up the information below.")
     time.sleep(0.5)
     inputName = input("\nName: ")
-    fullname = inputName.upper
-    age = input("\nAge: ")
+    contact = inputName.upper
+    age = int(input("\nAge: "))
     gender = input("\nGender (F/M/Transman/Transwoman/Rather not disclose): ")
     address = input("\nAddress: ")
-    number = input("\nContact Number: ")
+    number = int(input("\nContact Number: "))
     vaccine = input("\nHave you been fully vaccinated againts COVID-19? (Yes/No): ")
     booster = input("\nHave you completed your booster shots against COVID-19? (Yes/No): ")
     comorbidity = input("\nDo you have any existing health conditions? (If yes, please state them. If no, type none.): ")
@@ -37,26 +37,26 @@ def optionOne():
 def saveInfo():
     global userContact
     userContact = {
-        fullname: {"Name": inputName,
-                    "Age" : age,
-                    "Gender" : gender,
-                    "Address" : address,
-                    "Phone" : number,
-                    "Vaccine" : vaccine,
-                    "Booster" : booster,
-                    "Comorbidity" : comorbidity
+            contact: {  "Name": inputName,
+                        "Age" : age,
+                        "Gender" : gender,
+                        "Address" : address,
+                        "Phone" : number,
+                        "Vaccine" : vaccine,
+                        "Booster" : booster,
+                        "Comorbidity" : comorbidity
                     }
-    }
+            }
 
 def optionTwo():
     global searchInfo
     print("\nYou have selected: Option 2.")
     loading()
     searchInfo = input("\nEnter the full name of the contact you wish to search: ")
-    searchInfo = searchInfo.upper
     print()
+    contactInfo = searchInfo.upper
     loading()
-    if searchInfo in userContact:
+    if contactInfo in userContact:
         show = "\nThis is what we retrived:\n"
         for i in show:
             sys.stdout.write(i)
@@ -64,10 +64,10 @@ def optionTwo():
             time.sleep(0.05),
         print()
         for key, value in userContact.items():
-            print("Name: ", value["name"], "\nAge: ", value["age"], "\nGender: ", value["gender"], "\nAddress: ", value["address"], "\nContact Number: ", value["number"], "\nFully vaccinated?: ", value["vaccine"], "\nBooster shots complete?: ", value["booster"], "\nComorbidities: ", value["comorbidity"])
-        print()
-    if searchInfo not in userContact:
-        print("\nSorry, than contact is unavailable. Please try again.")
+            print("Name: ", value["Name"], "\nAge: ", value["Age"], "\nGender: ", value["Gender"], "\nAddress: ", value["Address"], "\nContact Number: ", value["Number"], "\nFully vaccinated?: ", value["Vaccine"], "\nBooster shots complete?: ", value["Booster"], "\nComorbidities: ", value["Comorbidity"])
+        print("")
+    if contactInfo not in userContact:
+        print("\nSorry, that contact is unavailable. Please try again.\n\n")
 
 def goodbye():
     print("Thank you for using Contract Tracer, please come again!")
