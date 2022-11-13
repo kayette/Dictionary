@@ -22,7 +22,7 @@ def optionOne():
     print("\nYou have selected: Option 1. Kindly fill up the information below.")
     time.sleep(0.5)
     inputName = input("\nName: ")
-    contact = inputName.upper
+    contact = inputName.upper()
     age = int(input("\nAge: "))
     gender = input("\nGender (F/M/Transman/Transwoman/Rather not disclose): ")
     address = input("\nAddress: ")
@@ -37,34 +37,34 @@ def optionOne():
 def saveInfo():
     global userContact
     userContact = {
-            contact: {  "Name": inputName,
-                        "Age" : age,
-                        "Gender" : gender,
-                        "Address" : address,
-                        "Phone" : number,
-                        "Vaccine" : vaccine,
-                        "Booster" : booster,
-                        "Comorbidity" : comorbidity
+        contact:    {"Name" : inputName,
+                    "Age" : age,
+                    "Gender": gender,
+                    "Address" : address,
+                    "Number" : number,
+                    "Vaccine" : vaccine,
+                    "Booster" : booster,
+                    "Comorbidity" : comorbidity
                     }
-            }
+                }
 
 def optionTwo():
-    global searchInfo
+    global contactInfo
     print("\nYou have selected: Option 2.")
     loading()
     searchInfo = input("\nEnter the full name of the contact you wish to search: ")
+    contactInfo = searchInfo.upper()
     print()
-    contactInfo = searchInfo.upper
     loading()
     if contactInfo in userContact:
-        show = "\nThis is what we retrived:\n"
+        show = "\nThis is what we retrieved:\n"
         for i in show:
             sys.stdout.write(i)
             sys.stdout.flush()
             time.sleep(0.05),
         print()
         for key, value in userContact.items():
-            print("Name: ", value["Name"], "\nAge: ", value["Age"], "\nGender: ", value["Gender"], "\nAddress: ", value["Address"], "\nContact Number: ", value["Number"], "\nFully vaccinated?: ", value["Vaccine"], "\nBooster shots complete?: ", value["Booster"], "\nComorbidities: ", value["Comorbidity"])
+            print("Name: ",value["Name"], "\nAge: ",value["Age"], "\nGender: ",value["Gender"], "\nAddress: ",value["Address"], "\nContact Number: ",value["Number"], "\nFully vaccinated?: ",value["Vaccine"], "\nBooster shots complete?: ",value["Booster"], "\nComorbidities: ",value["Comorbidity"])
         print("")
     if contactInfo not in userContact:
         print("\nSorry, that contact is unavailable. Please try again.\n\n")
