@@ -70,7 +70,7 @@ def optionTwo():
         print("\nSorry, that contact is unavailable. Please try again.\n\n")
 
 def goodbye():
-    print("Thank you for using Contract Tracer, please come again!")
+    print("\nThank you for using Contract Tracer, please come again!\n")
 
 def contractTracer():
     hello()
